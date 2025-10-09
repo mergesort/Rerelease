@@ -61,7 +61,7 @@ public struct RecapScreen<LeadingView: View, TrailingView: View>: View {
                 self.trailingView
                     .tag(self.tabIndex(from: .trailingView))
             }
-            .tabViewStyle(.page(indexDisplayMode: self.releases.count > 1 ? .always : .never))
+            .tabViewStyle(.page(indexDisplayMode: self.hasMultiplePages ? .always : .never))
             .background(self.derivedBackgroundStyle)
 
             Button(action: {
@@ -133,6 +133,12 @@ public extension RecapScreen where LeadingView == EmptyView, TrailingView == Emp
 private extension RecapScreen {
     var displayedReleases: [Release] {
         self.releases.reversed()
+    }
+
+    var hasMultiplePages: Bool {
+        let hasLeading: Bool = (LeadingView.self != EmptyView.self)
+        let hasTrailing: Bool = (TrailingView.self != EmptyView.self)
+        return hasLeading || hasTrailing || self.releases.count > 1
     }
 
     var derivedBackgroundStyle: AnyShapeStyle {
