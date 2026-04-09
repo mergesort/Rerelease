@@ -7,10 +7,13 @@ description: Integrates the Recap Swift package into SwiftUI apps, authors Recap
 
 Use this skill when integrating, configuring, or using the Recap library.
 
+Project-wide repository guidance now lives in `AGENTS.md` at the repo root. Use this skill for Recap-specific integration decisions that go beyond the shared repo guidance.
+
 ## What to read first
 
 Start with these files:
 
+- `AGENTS.md`
 - `README.md`
 - `Sources/Recap/Public/RecapScreen.swift`
 - `Sources/Recap/Public/View+Recap.swift`
@@ -27,25 +30,6 @@ Read additional public API files in `Sources/Recap/Public/` only if the task tou
 2. Prefer Recap's public APIs over custom implementations.
 3. Match existing Recap naming and examples from the README and demo app.
 4. Keep examples and release content user-facing and concise.
-
-## Integration rules
-
-- Prefer `ReleasesParser(fileName:)` for bundled release markdown.
-- Prefer `RecapScreen(releases:)` as the entry point for presentation.
-- Prefer `RecapDisplayPolicy` and `RecapDisplayPolicy.Trigger` over hand-rolled version gating.
-- Prefer `.recapScreenPaginationStyle(.automatic)` unless the user explicitly wants forced `.labeled` or `.compact`.
-- When customizing behavior, use `View+Recap` modifiers instead of editing internal implementation unless the task is explicitly a library change.
-
-## Release markdown rules
-
-When creating or editing a Recap releases markdown file:
-
-- Keep the newest release first.
-- Follow the schema documented in `README.md`.
-- Use one release section per app version.
-- Use user-facing feature titles and descriptions, not commit-style summaries.
-- Choose the semantic change type (`Major`, `Minor`, `Patch`) based on product impact, not commit count.
-- Reuse the style and structure of `Demo/Demo/Assets/Releases.md`.
 
 ## Mac Catalyst guidance
 
